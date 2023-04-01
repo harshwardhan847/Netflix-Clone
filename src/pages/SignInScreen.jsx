@@ -3,6 +3,7 @@ import { auth } from "../firebase";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { selectUser } from "../features/userSlice";
 const SignInScreen = ({ sign }) => {
   const navigate = useNavigate();
   const emailRef = useRef(null);
@@ -10,24 +11,39 @@ const SignInScreen = ({ sign }) => {
   const register = async (e) => {
     e.preventDefault();
     const authentication = getAuth();
-    console.log("clicked");
+
     await createUserWithEmailAndPassword(
       authentication,
       emailRef.current.value,
       passwordRef.current.value
     )
       .then((authUser) => {
-        console.log("harsh");
         console.log(authUser.user);
-        sign(true);
-        // navigate("/");
+        navigate("/");
       })
-      .catch((err) => {
-        alert(err.message);
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
       });
   };
   const signIn = (e) => {
     e.preventDefault();
+    signInWithEmailAndPassword(
+      auth,
+      emailRef.current.value,
+      passwordRef.current.value
+    )
+      .then((userCredential) => {
+        // Signed in
+        selectUser(userCredential.user);
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorCode, errorMessage);
+      });
   };
   return (
     <div className="max-w-[500px] p-16 mx-auto bg-black">
