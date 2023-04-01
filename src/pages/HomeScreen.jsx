@@ -13,6 +13,41 @@ const HomeScreen = () => {
         fetchUrl={requests.fetchNetflixOriginals}
         isLargeRow
       />
+      <Row
+        title="Trending Now"
+        fetchUrl={requests.fetchTrending}
+        isLargeRow={false}
+      />
+      <Row
+        title="Top Rated"
+        fetchUrl={requests.fetchTopRated}
+        isLargeRow={false}
+      />
+      <Row
+        title="Comedy"
+        fetchUrl={requests.fetchComedyMovies}
+        isLargeRow={false}
+      />
+      <Row
+        title="Romance"
+        fetchUrl={requests.fetchRomanceMovies}
+        isLargeRow={false}
+      />
+      <Row
+        title="Action"
+        fetchUrl={requests.fetchActionMovies}
+        isLargeRow={false}
+      />
+      <Row
+        title="Documentries"
+        fetchUrl={requests.fetchDocumentaries}
+        isLargeRow={false}
+      />
+      <Row
+        title="Horror"
+        fetchUrl={requests.fetchHorrorMovies}
+        isLargeRow={false}
+      />
     </div>
   );
 };
