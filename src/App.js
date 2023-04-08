@@ -5,6 +5,7 @@ import LoginScreen from "./pages/LoginScreen";
 import { auth } from "./firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUser } from "./features/userSlice";
+import ProfileScreen from "./pages/ProfileScreen";
 function App() {
   const user = useSelector(selectUser);
   console.log(user);
@@ -20,7 +21,7 @@ function App() {
           })
         );
       } else {
-        dispatch(logout);
+        dispatch(logout());
       }
     });
   }, [dispatch]);
@@ -32,6 +33,7 @@ function App() {
         ) : (
           <Routes>
             <Route exact path="/" element={<HomeScreen />} />
+            <Route exact path="/profile" element={<ProfileScreen />} />
           </Routes>
         )}
       </div>

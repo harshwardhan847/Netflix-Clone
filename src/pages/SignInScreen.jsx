@@ -20,6 +20,7 @@ const SignInScreen = ({ sign }) => {
       .then((authUser) => {
         console.log(authUser.user);
         navigate("/");
+        sign(true);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -42,7 +43,7 @@ const SignInScreen = ({ sign }) => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorCode, errorMessage);
+        console.log(errorCode, errorMessage);
       });
   };
   return (

@@ -44,10 +44,13 @@ const LoginScreen = () => {
                   <input
                     type="email"
                     placeholder="Email Address"
-                    className="p-3 outline-none h-full w-[30%] max-w-[600px]"
+                    className="p-3 text-black outline-none h-full w-[30%] max-w-[600px]"
                   />
                   <button
-                    onClick={() => setSignIn(true)}
+                    onClick={() => {
+                      setSignIn(true);
+                      
+                    }}
                     className="p-2 h-full border-none bg-red-600 cursor-pointer font-semibold hover:text-white hover:bg-red-800 ease-in-out duration-150"
                   >
                     GET STARTED
